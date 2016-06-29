@@ -1,0 +1,35 @@
+<h2><%= @deal.name %></h2>
+
+<form method="post" action="/deals/<%= @deal.id %>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Deal">
+</form>
+
+<form action="/deals">
+  <input type="submit" value="Back to List  ">
+</form>
+
+<h3>Tasks (click to edit)</h3>
+<table border="1">
+  <tr>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Last Updated</th>
+  </tr>
+  <% @deal.tasks.each do |t| %>
+    <% time = t.updated_at %>
+    <tr>
+      <td><a href='/tasks/:id'><%= t.description %></a></td>
+      <td>
+        <% if t.complete %>
+          <%= "COMPLETE" %>
+        <% else %>
+          <%= "OPEN" %>
+        <% end %>
+      </td>
+      <td><%= time.month %>/<%= time.day %>/<%= time.year %></td>
+    </tr>
+
+  <% end %>
+
+</table>
