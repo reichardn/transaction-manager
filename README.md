@@ -1,0 +1,1 @@
+Very light version of a content management system for managing legal documents related to M&A transactions
