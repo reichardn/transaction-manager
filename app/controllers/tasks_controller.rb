@@ -1,7 +1,21 @@
 class TasksController < ApplicationController
 
-  get 'tasks/new' do
+  get '/deals/:id/new-task' do 
+    @deal = Deal.find(params[:id])
+    if @deal && @deal.user_id == session[:user_id] && Helpers.is_logged_in?(session) 
+      erb :'tasks/create_task'
+    else
+      redirect '/login'
+    end
+  end
 
+  post '/deals/:id/new-task' do 
+    t = Task.new(description: params[:description], deal_id: params[:id])
+    if t.save
+      redirect "deals/#{t.deal_id}"
+    else 
+      redirect "deals/#{Helpers.current_user(session).id}/new-task"
+    end
   end
 
   get '/tasks/:id' do
@@ -18,7 +32,7 @@ class TasksController < ApplicationController
   end  
 
   delete '/tasks/:id' do
-
+    
   end
 
   post '/tasks/:id/change-status' do 

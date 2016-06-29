@@ -1,0 +1,16 @@
+<h1>Create Deal</h1>
+ 
+<form action="/deals/new" method="POST">
+
+
+  <label>Name:</label> 
+  <input type="text" name="name"><br><br>
+
+  <label>Add some tasks (optional)</label><br>
+  <input type="text" name="tasks[][description]"><br>
+  <input type="text" name="tasks[][description]">
+  <br>
+
+ 
+  <input type="submit" value="submit">
+</form>

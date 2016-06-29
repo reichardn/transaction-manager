@@ -6,9 +6,10 @@
 </form>
 
 <form action="/deals">
-  <input type="submit" value="Back to Deal's List">
+  <input type="submit" value="Back to Deals List">
 </form><br>
-<form action="/tasks/new">
+
+<form action="/deals/<%= @deal.id %>/new-task">
   <input type="submit" value="Add Task">
 </form>
 
