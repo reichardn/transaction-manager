@@ -8,8 +8,8 @@ class Helpers
     !!session[:user_id]
   end
 
-  def self.validate_post(session)
-    
+  def self.validate_task(task, session)
+    self.current_user(session).tasks.include?(task)
   end
 
 end

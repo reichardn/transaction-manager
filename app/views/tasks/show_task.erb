@@ -1,0 +1,28 @@
+<h2><%= @task.description %></h2>
+<h3><%= @task.deal.name %></h3>
+<h4>Status: 
+<% if @task.complete %>
+  <%= "COMPLETE" %>
+<% else %>
+  <%= "OPEN" %>
+<% end %>
+</h4>
+
+<form method="post" action="/tasks/<%= @task.id %>/change-status">
+  <label></label>
+  <input type="submit" value="change status">
+</form>
+
+<form action="/tasks/<%= @task.id %>/edit">
+  <input type="submit" value="edit description">
+</form>
+
+<form action="/tasks/<%= @task.id %>/edit">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="edit description">
+</form>
+<br>
+
+<form action="/deals/<%= @task.deal_id %>">
+  <input type="submit" value="return to deal">
+</form>

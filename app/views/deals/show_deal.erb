@@ -6,7 +6,10 @@
 </form>
 
 <form action="/deals">
-  <input type="submit" value="Back to List  ">
+  <input type="submit" value="Back to Deal's List">
+</form><br>
+<form action="/tasks/new">
+  <input type="submit" value="Add Task">
 </form>
 
 <h3>Tasks (click to edit)</h3>
@@ -19,7 +22,7 @@
   <% @deal.tasks.each do |t| %>
     <% time = t.updated_at %>
     <tr>
-      <td><a href='/tasks/:id'><%= t.description %></a></td>
+      <td><a href="/tasks/<%= t.id %>"><%= t.description %></a></td>
       <td>
         <% if t.complete %>
           <%= "COMPLETE" %>
