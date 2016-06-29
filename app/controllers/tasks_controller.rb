@@ -31,8 +31,30 @@ class TasksController < ApplicationController
     end
   end  
 
+  get '/tasks/:id/edit' do
+    if !Helpers.is_logged_in?(session)
+      redirect '/login'
+    end
+
+    @task = Task.find(params[:id])
+    if Helpers.validate_task(@task, session)
+      erb :'tasks/edit_task'
+    else 
+      redirect '/deals'
+    end
+  end
+
+  post '/tasks/:id' do
+    @task = Task.find(params[:id])
+    if @task.update(description: params[:description])
+      redirect "/deals/#{@task.deal_id}"
+    else
+      redirect "deals/#{params[:id]}/edit" 
+    end
+  end
+
   delete '/tasks/:id' do
-    
+    # TO DO -------------
   end
 
   post '/tasks/:id/change-status' do 

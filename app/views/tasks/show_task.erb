@@ -17,9 +17,9 @@
   <input type="submit" value="edit description">
 </form>
 
-<form action="/tasks/<%= @task.id %>/edit">
+<form action="/tasks/<%= @task.id %>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="edit description">
+  <input type="submit" value="delete task">
 </form>
 <br>
 

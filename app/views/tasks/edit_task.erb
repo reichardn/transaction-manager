@@ -1,0 +1,10 @@
+<h1>Edit Task: <%= @task.description %></h1>
+ 
+<form action="/tasks/<%= @task.id %>" method="POST">
+
+
+  <label>Description:</label> 
+  <input type="text" name="description"><br><br>
+ 
+  <input type="submit" value="update">
+</form>
