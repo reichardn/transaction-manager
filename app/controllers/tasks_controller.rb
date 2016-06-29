@@ -53,8 +53,13 @@ class TasksController < ApplicationController
     end
   end
 
-  delete '/tasks/:id' do
-    # TO DO -------------
+  delete '/tasks/:id/delete' do
+    @task = Task.find(params[:id])
+    deal_id = @task.deal_id
+    if Helpers.validate_task(@task, session)
+      @task.delete
+    end
+    redirect "/deals/#{deal_id}"
   end
 
   post '/tasks/:id/change-status' do 

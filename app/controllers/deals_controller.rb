@@ -43,4 +43,13 @@ class DealsController < ApplicationController
     end
   end
 
+  delete '/deals/:id/delete' do
+    @deal = Deal.find(params[:id])
+    if @deal.user_id == session[:user_id]
+      Task.destroy_all(deal_id: @deal.id)
+      @deal.delete
+    end
+    redirect '/deals'
+  end
+
 end
