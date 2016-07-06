@@ -20,10 +20,9 @@ class DealsController < ApplicationController
   post '/deals/new' do 
     d = Deal.new(name: params[:name], user: Helpers.current_user(session))
     if d.save
-       params[:tasks].each do |t|
-        d.tasks << Task.create(description: t[:description], deal_id: d.id)
+      params[:tasks].each do |t|
+        d.tasks.create(description: t[:description])
       end
-      d.save
       redirect '/deals'
     else 
       redirect '/deals/new'
